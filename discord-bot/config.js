@@ -2,9 +2,16 @@
 import dotenv from 'dotenv';
 dotenv.config();
 
+// Проверка наличия токена
+if (!process.env.BOT_TOKEN) {
+  console.error('ОШИБКА: BOT_TOKEN не указан в файле .env!');
+  console.error('Создайте файл .env и добавьте строку: BOT_TOKEN=ваш_токен_бота');
+  process.exit(1);
+}
+
 export default {
-  // Токен Discord бота
-  botToken: process.env.BOT_TOKEN || 'MTM2NzEzMjIzNDcxNjU0NTAzNA.Gv3dNW.Ff63Knbjxoo7CGENe3RXkR0E3NQWen0n2TzK3I',
+  // Токен Discord бота (должен быть в .env файле)
+  botToken: process.env.BOT_TOKEN,
   
   // Порт для API
   port: process.env.PORT || 3001,
